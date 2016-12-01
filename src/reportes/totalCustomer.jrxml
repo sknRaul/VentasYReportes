@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ee5bf274-cc6d-4e14-8e60-1483606bee28">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="name" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select nombre, rfc, sum(Total) as total from reportes group by nombre;]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rfc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="nombre">
+		<groupExpression><![CDATA[$F{nombre}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#990099" uuid="5acf83ca-2602-4fed-a5d1-494adf46c570"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="0dfb3c5f-9cf4-4f55-a9b7-981517e64e78"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="f65043b8-e666-4f71-9415-173560101076"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Reportes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="46" width="200" height="22" uuid="21c4f125-c5bc-4bfe-a2c6-bb6708075b16"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Total por cliente]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="dd6b9022-c794-4c58-bd49-1c494e85c1da"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="277" height="15" uuid="8da0dd38-eff5-430c-8ff8-df10697b4e44"/>
+				<text><![CDATA[rfc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="277" y="19" width="277" height="15" uuid="10bb3710-5db2-4f3a-b521-78f940d60da2"/>
+				<text><![CDATA[total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="4ad81053-4bd2-46a5-a82d-5bdae1cecfee"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="277" height="15" uuid="3b668264-d57a-49a8-883c-fe7ffaaa369b"/>
+				<textFieldExpression><![CDATA[$F{rfc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="277" y="0" width="277" height="15" uuid="0a212999-3d66-436a-9a69-83d6642741f8"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="061aef0f-48ba-464e-b55d-bb979801a9db"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="1b69b7d3-d028-44cd-b4f3-88c8841402ef"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="ed241b5c-a829-4dba-9617-27e70edb73eb"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="f1f95ead-5451-4443-a949-2a44aee485de"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
